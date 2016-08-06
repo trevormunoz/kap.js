@@ -1,0 +1,13 @@
+# Site settings
+title: Katherine Anne Porter
+email: tmunoz@umd.edu
+description: >
+  The collected correspondence of American author Katherine Anne Porter.
+baseurl: ""
+url: "http://dev.katherineanneporter.info"
+
+# Build settings
+markdown: kramdown
+permalink: /blog/:year/:month/:day/:title.html
+exclude: [src, node_modules, webpack.dev.config.js, webpack.prod.config.js, eslint.js, package.json, README.md, LICENSE]
+keep_files: [static]
