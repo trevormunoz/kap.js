@@ -63,7 +63,11 @@ const options = {
     useEslintrc: false
   },
   plugins: [
-    new webpack.HotModuleReplacementPlugin()
+    new webpack.DefinePlugin({ 'process.env.NODE_ENV': '"development"' }),
+    new webpack.HotModuleReplacementPlugin(),
+    new webpack.ProvidePlugin({
+    'fetch': 'imports?this=>global!exports?global.fetch!whatwg-fetch'
+  })
   ]
 };
 
