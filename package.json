@@ -7,7 +7,7 @@
     "babel-loader": "6.2.4",
     "babel-preset-es2015": "6.13.2",
     "babel-preset-react": "6.11.1",
-    "css-loader": "0.23.1",
+    "css-loader": "git+ssh://git@github.com/webpack/css-loader.git",
     "eslint": "3.2.2",
     "eslint-loader": "1.5.0",
     "eslint-plugin-jsx-a11y": "2.0.1",

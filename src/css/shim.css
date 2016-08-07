@@ -1,0 +1,5 @@
+.site-title > h1 > span:nth-child(1)::after,
+.site-title > h1 > span:nth-child(2)::after {
+  content: '\A';
+  white-space: pre-wrap;
+}
