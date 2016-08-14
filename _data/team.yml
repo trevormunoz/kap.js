@@ -1,0 +1,15 @@
+---
+  - name: Ruth M. Alvarez
+    group: core
+    role: General Editor
+    bio: >
+      Ruth M. (Beth) Alvarez is awesome.
+    start_year: 2012
+
+  - name: Liz DePriest
+    role: General Editor
+    group: core
+    bio: >
+       Liz DePriest is awesome too.
+    start_year: 2013
+    end_year: 2015

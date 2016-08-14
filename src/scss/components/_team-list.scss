@@ -1,0 +1,20 @@
+// See shim.css for related code
+// that can't pass through sass
+// because string parsing is a FAIL
+
+.role-span,
+dt {
+  @include highlight-list-text-style;
+}
+
+dt::after {
+  color: $text-color;
+  content: ' /';
+  font-weight: 200;
+  white-space: pre;
+}
+
+.role-span {
+  color: $text-color;
+  font-weight: 200;
+}
