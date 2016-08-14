@@ -1,0 +1,11 @@
+---
+layout: page
+title: Correspondents
+permalink: correspondents/
+---
+<dl>
+  {% for person in site.correspondents %}
+  <dt><a href="{{ person.url }}">{{ person.title }}</a></dt>
+  <dd>{{ person.relationship }}</dd>
+  {% endfor %}
+</dl>

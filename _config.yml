@@ -6,6 +6,12 @@ description: >
 baseurl: ""
 url: "http://dev.katherineanneporter.info"
 
+# Collections
+collections:
+  correspondents:
+    output: true
+    path: /correspondents/:path/
+
 # Build settings
 markdown: kramdown
 permalink: /blog/:year/:month/:day/:title.html
