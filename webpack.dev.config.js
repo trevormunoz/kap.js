@@ -1,6 +1,10 @@
 const webpack = require('webpack');
 const path = require('path');
 
+var Dashboard = require('webpack-dashboard');
+var DashboardPlugin = require('webpack-dashboard/plugin');
+var dashboard = new Dashboard();
+
 const options = {
   entry: [
     './src/js/main.js'
@@ -14,6 +18,7 @@ const options = {
   devServer: {
     contentBase: 'http://localhost:4000/',
     colors: true,
+    quiet: true,
     hot: true,
     inline: true,
     headers: { 'Access-Control-Allow-Origin': '*' }
