@@ -1,0 +1,16 @@
+.map-container {
+  margin-bottom: 2.726rem;
+  width: 100%;
+}
+
+.map-canvas {
+  height: 50vh;
+}
+
+// Media queries
+
+@media (min-width: $bp-small) {
+  .map-canvas {
+    height: 19rem;
+  }
+}
