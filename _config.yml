@@ -11,6 +11,10 @@ collections:
   correspondents:
     output: true
     path: /correspondents/:path/
+  places:
+    output: true
+    path: /places/:path/
+
 # Data
 page_gen:
   - data: 'collection-items'
