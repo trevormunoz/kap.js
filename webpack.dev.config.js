@@ -50,6 +50,10 @@ const options = {
         loader: 'style!css!sass'
       },
       {
+        test: /\.css$/,
+        loader: 'style!css'
+      },
+      {
         test: /\.json$/,
         include: ['src'],
         loader: 'json'
