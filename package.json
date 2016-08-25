@@ -28,9 +28,13 @@
     "whatwg-fetch": "1.0.0"
   },
   "dependencies": {
+    "elasticsearch": "11.0.1",
     "leaflet": "1.0.0-rc.3",
     "leaflet.markercluster": "1.0.0-rc.1.0",
+    "manifesto.js": "0.2.1",
     "normalize.css": "4.2.0",
+    "openseadragon": "2.2.1",
+    "pad-left": "2.1.0",
     "react": "15.3.0",
     "react-dom": "15.3.0"
   },
