@@ -1,5 +1,3 @@
-.site-title > h1 > span:nth-child(1)::after,
-.site-title > h1 > span:nth-child(2)::after {
 dd::after {
   content: '\A';
   white-space: pre;
@@ -10,6 +8,28 @@ dd + dt::before {
     white-space: pre;
 }
 
+.site-title-content > h1 > span:nth-child(1)::after,
+.site-title-content > h1 > span:nth-child(2)::after {
   content: '\A';
   white-space: pre-wrap;
+}
+
+.site-title-content > h1 > span:nth-child(2) {
+  padding-left: .88rem;
+}
+
+@media (min-width: 522px) {
+  nav ul::before {
+    color: #e0e0e1;
+    content: '\25be';
+    font-size: 1.602rem;
+    white-space: pre;
+  }
+}
+
+@media (min-width: 1020px) {
+  nav ul::before {
+    content: '';
+    display: none;
+  }
 }
