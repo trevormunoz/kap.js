@@ -3,3 +3,4 @@ _includes/typekit.html
 .sass-cache
 .jekyll-metadata
 node_modules
+static/vendor
