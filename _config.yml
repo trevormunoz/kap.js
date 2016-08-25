@@ -11,6 +11,12 @@ collections:
   correspondents:
     output: true
     path: /correspondents/:path/
+# Data
+page_gen:
+  - data: 'collection-items'
+    template: 'item-page'
+    name: 'id'
+    dir: 'collection/items'
 
 # Build settings
 markdown: kramdown
