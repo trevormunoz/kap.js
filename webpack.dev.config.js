@@ -73,6 +73,8 @@ const options = {
     new webpack.ProvidePlugin({
     'fetch': 'imports?this=>global!exports?global.fetch!whatwg-fetch'
   })
+  }),
+    new DashboardPlugin(dashboard.setData)
   ]
 };
 
