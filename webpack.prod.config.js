@@ -38,11 +38,11 @@ const options = {
       },
       {
         test: /\.scss$/,
-        loader: 'style!css!sass'
+        loader: ExtractTextPlugin.extract('style-loader', 'css-loader!sass-loader')
       },
       {
         test: /\.css$/,
-        loader: 'style!css'
+        loader: ExtractTextPlugin.extract('style-loader', 'css-loader')
       },
       {
         test: /\.json$/,
