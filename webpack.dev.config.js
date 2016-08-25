@@ -7,7 +7,10 @@ var dashboard = new Dashboard();
 
 const options = {
   entry: [
-    './src/js/main.js'
+    './src/js/main.js',
+    './src/js/viewer.js',
+    './src/js/map.js',
+    './src/css/shim.css'
   ],
   output: {
     filename: '[name].js',
@@ -76,7 +79,6 @@ const options = {
     new webpack.HotModuleReplacementPlugin(),
     new webpack.ProvidePlugin({
     'fetch': 'imports?this=>global!exports?global.fetch!whatwg-fetch'
-  })
   }),
     new DashboardPlugin(dashboard.setData)
   ]
