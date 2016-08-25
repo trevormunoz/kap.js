@@ -15,6 +15,8 @@ module.exports = {
   },
 
   globals: {
+    manifesto: true,
+    OpenSeadragon: true,
     L: true
   },
 
