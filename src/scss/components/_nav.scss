@@ -1,0 +1,71 @@
+// See shim.css for workaround related to this code
+
+nav {
+  background-color: color(carmine);
+  color: color(warm-black, x-light);
+  display: none;
+
+  a {
+    color: color(warm-black, x-light);
+    font-weight: 400;
+  }
+
+  a:visited {
+    color: $inverted-text-color;
+  }
+}
+
+// Media queries
+
+@media (min-width: $bp-small) {
+  nav {
+    display: flex;
+    justify-content: center;
+
+    ul {
+      display: flex;
+      flex-flow: row;
+      padding-top: ($line-height / 2);
+
+      li {
+        display: none;
+        padding-left: $spacer;
+      }
+
+      li:last-child {
+        display: flex;
+        flex: 1;
+        font-size: $font-size-h5;
+      }
+    }
+  }
+
+  .nav-content {
+    display: flex;
+    justify-content: flex-end;
+    width: 80%;
+
+    ul {
+      margin-bottom: 0;
+    }
+  }
+}
+
+@media (min-width: $bp-lg) {
+  nav {
+    ul {
+      li {
+        display: flex;
+        font-size: $font-size-small;
+      }
+
+      li:last-child {
+        font-size: $font-size-small;
+      }
+    }
+  }
+
+  .nav-content {
+    width: 90%;
+  }
+}

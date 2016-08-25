@@ -1,0 +1,13 @@
+.search-form {
+  margin-bottom: $line-height;
+}
+
+.result {
+  border-top: .5px solid color(warm-black);
+  display: flex;
+  padding-top: ($line-height / 2);
+
+  figure {
+    margin-top: 0;
+  }
+}

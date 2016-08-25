@@ -1,0 +1,61 @@
+footer {
+  display: none;
+  width: 100vw;
+}
+
+// Media queries
+@media (min-width: $bp-med) {
+  footer {
+    background-color: color(puce);
+    color: color(warm-black, x-light);
+    display: flex;
+    justify-content: center;
+    padding-bottom: ($line-height * 2);
+  }
+
+  .footer-content {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-around;
+    padding-top: $line-height;
+
+    .credit-line,
+    ul {
+      flex: 1;
+      padding-right: ($spacer * 2.25);
+    }
+
+    ul > li {
+      border-top: .5px solid color(puce, x-light);
+      padding-bottom: ($line-height / 2);
+    }
+
+    a,
+    a:visited {
+      color: color(carmine, light);
+      font-weight: 400;
+    }
+
+    a:hover,
+    a:hover:visited {
+      color: color(carmine);
+    }
+  }
+
+  .credit-line {
+    background-color: color(puce, x-light); // Kind of a cheat until better logo
+    color: color(warm-black, x-light);
+    display: flex;
+    flex-flow: column-reverse;
+    font-family: $font-family-serif;
+    // font-size: $font-size-small;
+    font-style: italic;
+    line-height: ($line-height * .9);
+    padding-left: ($spacer * 2.25);
+
+    figure {
+      margin-left: 0;
+      margin-right: 0;
+    }
+  }
+}

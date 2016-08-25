@@ -1,0 +1,9 @@
+// scss-lint:disable ImportantRule
+.a11y-text {
+  clip: rect(1px, 1px, 1px, 1px);
+  height: 1px;
+  overflow: hidden;
+  position: absolute !important;
+  width: 1px;
+}
+// scss-lint:enable ImportantRule

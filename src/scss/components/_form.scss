@@ -1,0 +1,19 @@
+form {
+  display: flex;
+
+  input {
+    display: flex;
+    flex: 4 0 auto;
+    padding-left: ($gutter / 4);
+  }
+
+  .button {
+    display: flex;
+    flex: 1 0 auto;
+    margin-left: ($gutter / 4);
+  }
+}
+
+::placeholder {
+  color: color(warm-black, x-light);
+}

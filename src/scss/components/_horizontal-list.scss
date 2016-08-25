@@ -1,0 +1,14 @@
+.horizontal-list {
+  display: flex;
+  flex-flow: row;
+  justify-content: flex-start;
+  width: 50%;
+
+  li {
+    flex: 1;
+  }
+
+  li+li {
+    padding-left: $gutter;
+  }
+}

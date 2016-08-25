@@ -1,0 +1,7 @@
+@mixin highlight-list-text-style {
+  color: color(carmine);
+  font-family: $font-family-headings;
+  font-size: $font-size-h2;
+  font-weight: 400;
+  line-height: 2.432rem;
+}
