@@ -1,11 +1,8 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import Widget from './Widget';
-
 import "../scss/main.scss";
-window.console.log("Webpack works!");
+import "../css/shim.css";
 
-ReactDOM.render(
-  <Widget />,
-  document.getElementById('component')
-);
+import "./viewer.js";
+import "./map.js";
+import "./search.js";
+
+window.console.log('main.js loaded');
