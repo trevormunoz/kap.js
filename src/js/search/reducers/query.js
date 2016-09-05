@@ -1,5 +1,5 @@
 import {
-  UPDATE_QUERY, START_SEARCH_REQUEST, RECEIVE_RESULTS
+  UPDATE_QUERY, START_SEARCH_REQUEST, RECEIVE_RESULTS, SEARCH_REQUEST_FAILURE
 } from '../actions/search';
 
 const initialState = {
@@ -9,7 +9,8 @@ const initialState = {
   pageSize: 25,
   from: 0,
   total: null,
-  items: []
+  items: [],
+  errors: ''
 };
 
 export default function query(state = initialState, action) {
@@ -30,6 +31,11 @@ export default function query(state = initialState, action) {
         total: action.total,
         items: action.items
       });
+    case SEARCH_REQUEST_FAILURE:
+      return Object.assign({}, state, {
+        isFetching: false,
+        errors: action.message
+      })
     default:
       return state;
   }

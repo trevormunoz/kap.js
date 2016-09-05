@@ -8,6 +8,7 @@ export const UPDATE_QUERY = 'UPDATE_QUERY';
 export const DO_SEARCH = 'DO_SEARCH';
 export const START_SEARCH_REQUEST = 'START_SEARCH_REQUEST';
 export const RECEIVE_RESULTS = 'RECEIVE_RESULTS';
+export const SEARCH_REQUEST_FAILURE = 'SEARCH_REQUEST_FAILURE';
 
 
 /* Action Creators */
@@ -62,6 +63,13 @@ function receiveResults(hitTotal, visibleHits) {
   }
 }
 
+function searchRequestFailure(message) {
+  return {
+    type: SEARCH_REQUEST_FAILURE,
+    message: message
+  }
+}
+
 function transformHits(hitObj, id_length=4) {
   const linkBase = '/collection/items/kap-';
   const paddedId = pad(hitObj._id, 4, '0');
@@ -95,6 +103,8 @@ export function doSearch() {
         const { hits } = result;
         const updatedHits = hits.hits.map(transformHits);
         dispatch(receiveResults(hits.total, updatedHits));
+      } else {
+        dispatch(searchRequestFailure(err.message));
       }
     });
   }
