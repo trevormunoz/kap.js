@@ -5,3 +5,4 @@ _includes/typekit.html
 .jekyll-metadata
 node_modules
 static/vendor
+**/clientConfig.js
