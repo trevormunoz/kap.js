@@ -16,3 +16,17 @@
     margin-top: 0;
   }
 }
+
+.page-controls {
+  margin-bottom: ($line-height * 2);
+}
+
+.page-controls-inner {
+  display: flex;
+  flex-flow: row;
+  justify-content: center;
+
+  a+a {
+    margin-left: ($gutter / 2);
+  }
+}
