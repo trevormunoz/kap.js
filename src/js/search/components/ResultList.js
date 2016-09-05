@@ -1,4 +1,5 @@
 import React, { Component, PropTypes } from 'react';
+import ResultStats from './ResultStats';
 
 class ResultList extends Component {
   constructor(props) {
@@ -7,7 +8,7 @@ class ResultList extends Component {
   }
 
   render() {
-    const { isFetching, total, items } = this.props;
+    const { isFetching, total, items, pageSize, from } = this.props;
     return (
       <div className="result-list">
         {isFetching && total === 0 &&
@@ -18,7 +19,7 @@ class ResultList extends Component {
         }
         {items.length > 0 &&
           <div className="results" style={{ opacity: isFetching ? 0.5 : 1 }}>
-            <div className="search-stats"><em>{total} results</em></div>
+            <ResultStats from={from} pageSize={pageSize} total={total} />
             <ul>{items.map(this.renderResult)}</ul>
           </div>
         }

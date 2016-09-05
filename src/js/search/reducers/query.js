@@ -17,7 +17,8 @@ export function query(state = initialState, action) {
     case UPDATE_QUERY:
       return Object.assign({}, state, {
         value: action.value,
-        queryType: action.queryType
+        queryType: action.queryType,
+        from: action.offset
       });
     case START_SEARCH_REQUEST:
       return Object.assign({}, state, {

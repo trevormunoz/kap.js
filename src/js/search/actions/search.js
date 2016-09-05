@@ -39,11 +39,12 @@ function receivePing(status, message) {
   }
 }
 
-export function updateQuery(value, queryType='simple') {
+export function updateQuery(value, queryType='simple', offset=0) {
   return {
     type: UPDATE_QUERY,
     value: value,
-    queryType: queryType
+    queryType: queryType,
+    offset: offset
   }
 }
 
@@ -96,5 +97,13 @@ export function doSearch() {
         dispatch(receiveResults(hits.total, updatedHits));
       }
     });
+  }
+}
+
+export function pageResults(newOffset) {
+  return function(dispatch, getState) {
+    const { query } = getState();
+    dispatch(updateQuery(query.value, query.queryType, newOffset));
+    dispatch(doSearch());
   }
 }

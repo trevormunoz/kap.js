@@ -4,6 +4,7 @@ import { ping } from '../actions/search';
 import StatusNotification from '../components/StatusNotification';
 import SearchFormContainer from '../containers/SearchFormContainer';
 import ResultList from '../components/ResultList';
+import Paginator from '../containers/Paginator';
 
 class SearchApp extends Component {
 
@@ -21,6 +22,7 @@ class SearchApp extends Component {
           : <SearchFormContainer />
         }
         <ResultList {...search} />
+        <Paginator />
       </div>
     );
   }
