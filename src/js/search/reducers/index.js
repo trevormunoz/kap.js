@@ -1,7 +1,6 @@
 import { combineReducers } from 'redux';
-import { endpoint } from './endpoint';
-import { query } from './query';
-
+import endpoint from './endpoint';
+import query from './query';
 
 const rootReducer = combineReducers({
   endpoint,

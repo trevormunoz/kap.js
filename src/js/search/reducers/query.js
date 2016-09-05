@@ -12,7 +12,7 @@ const initialState = {
   items: []
 };
 
-export function query(state = initialState, action) {
+export default function query(state = initialState, action) {
   switch (action.type) {
     case UPDATE_QUERY:
       return Object.assign({}, state, {

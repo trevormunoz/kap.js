@@ -4,7 +4,7 @@ const initialState = {
   status: ''
 };
 
-export function endpoint(state = initialState, action) {
+export default function endpoint(state = initialState, action) {
   switch (action.type) {
     case PING_REQUEST_SUCCESS:
       return Object.assign({}, state, {
