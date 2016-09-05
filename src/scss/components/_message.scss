@@ -1,0 +1,12 @@
+.msg {
+  color: $inverted-text-color;
+  padding-bottom: ($line-height / 2);
+  padding-left: $gutter;
+  padding-right: $gutter;
+  padding-top: ($line-height / 2);
+}
+
+.error {
+  background-color: color(carmine, light);
+  border: .5px solid color(carmine);
+}

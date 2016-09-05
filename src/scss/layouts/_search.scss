@@ -2,6 +2,11 @@
   margin-bottom: $line-height;
 }
 
+.search-stats {
+  color: color(warm-black, light);
+  margin-bottom: $line-height;
+}
+
 .result {
   border-top: .5px solid color(warm-black);
   display: flex;
