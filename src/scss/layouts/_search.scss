@@ -2,6 +2,47 @@
   margin-bottom: $line-height;
 }
 
+.search-facets {
+  display: flex;
+  flex: 0 1 auto;
+  flex-flow: row;
+  margin-bottom: $line-height;
+
+  .facet {
+    background-color: color(warm-black, x-light);
+    display: flex;
+    flex: 1;
+    flex-flow: column;
+    font-size: $font-size-small;
+    justify-content: flex-start;
+    max-height: 16rem;
+    overflow-y: scroll;
+    padding-top: ($line-height / 2);
+
+    h4 {
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    ul {
+      padding-left: ($gutter / 2);
+      padding-right: ($gutter / 2);
+    }
+
+    [type="checkbox"] {
+      margin-right: ($gutter / 2);
+    }
+  }
+
+  .facet+.facet {
+    margin-left: ($gutter / 2);
+  }
+
+  .facet-count {
+    margin-left: ($gutter / 4);
+  }
+}
+
 .search-stats {
   color: color(warm-black, light);
   margin-bottom: $line-height;
