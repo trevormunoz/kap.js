@@ -10,7 +10,9 @@ class StatusNotification extends Component {
 
   render() {
     return (
-      <p className="msg error">{this.getStatus(this.props.message)}</p>
+      <p className="msg error">
+        {this.getStatus(this.props.message)}
+      </p>
     );
   }
 }
