@@ -1,4 +1,5 @@
 import { client } from '../utilities/elasticsearch';
+import { aggregations } from '../utilities/aggregations';
 const pad = require('pad-left');
 
 /* Action Types */
@@ -55,11 +56,12 @@ function startSearchRequest() {
   }
 }
 
-function receiveResults(hitTotal, visibleHits) {
+function receiveResults(hitTotal, visibleHits, aggregations) {
   return {
     type: RECEIVE_RESULTS,
     total: hitTotal,
-    items: visibleHits
+    items: visibleHits,
+    facets: aggregations
   }
 }
 

@@ -10,6 +10,7 @@ const initialState = {
   from: 0,
   total: null,
   items: [],
+  facets: [],
   errors: ''
 };
 
@@ -29,7 +30,8 @@ export default function query(state = initialState, action) {
       return Object.assign({}, state, {
         isFetching: false,
         total: action.total,
-        items: action.items
+        items: action.items,
+        facets: action.facets
       });
     case SEARCH_REQUEST_FAILURE:
       return Object.assign({}, state, {
