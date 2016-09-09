@@ -5,9 +5,11 @@ class ResultStats extends Component {
     const { from, pageSize, total } = this.props;
     return (
       <div className="search-stats">
-        {total < pageSize
-          ? <em>Displaying results {from + 1} to {total} of {total} total results</em>
-          : <em>Displaying results {from + 1} to {from + pageSize} of {total} total results</em>
+        {from + pageSize > total &&
+          <em>Displaying results {from + 1} to {total} of {total} total results</em>
+        }
+        {from + pageSize < total &&
+          <em>Displaying results {from + 1} to {from + pageSize} of {total} total results</em>
         }
       </div>
     );

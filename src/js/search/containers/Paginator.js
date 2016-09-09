@@ -30,7 +30,9 @@ class Paginator extends Component {
             {offset >= pageSize &&
               <a className="button" onClick={this.decrementPage}>Previous</a>
             }
-            <a className="button" onClick={this.incrementPage}>Next</a>
+            {offset + pageSize < total &&
+              <a className="button" onClick={this.incrementPage}>Next</a>
+            }
           </div>
         }
       </div>
