@@ -4,9 +4,15 @@
 
 .search-facets {
   display: flex;
+  flex-flow: column;
+  margin-bottom: $line-height;
+}
+
+.facet-contents {
+  display: flex;
   flex: 0 1 auto;
   flex-flow: row;
-  margin-bottom: $line-height;
+  margin-bottom: ($line-height / 2);
 
   .facet {
     background-color: color(warm-black, x-light);
@@ -40,6 +46,15 @@
 
   .facet-count {
     margin-left: ($gutter / 4);
+  }
+}
+
+.facet-controls {
+  display: flex;
+  justify-content: flex-end;
+
+  div {
+    display: flex;
   }
 }
 
