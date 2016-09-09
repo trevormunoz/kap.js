@@ -1,4 +1,5 @@
 import React, { Component, PropTypes } from 'react';
+import Facets from '../containers/Facets';
 import ResultStats from './ResultStats';
 
 class ResultList extends Component {
@@ -19,6 +20,7 @@ class ResultList extends Component {
         }
         {items.length > 0 &&
           <div className="results" style={{ opacity: isFetching ? 0.5 : 1 }}>
+            <Facets />
             <ResultStats from={from} pageSize={pageSize} total={total} />
             <ul>{items.map(this.renderResult)}</ul>
           </div>

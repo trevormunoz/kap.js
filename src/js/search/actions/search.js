@@ -1,5 +1,6 @@
 import { client } from '../utilities/elasticsearch';
 import { aggregations } from '../utilities/aggregations';
+import { filterStanzaFactory } from '../utilities/filters';
 const pad = require('pad-left');
 
 /* Action Types */
@@ -10,6 +11,9 @@ export const DO_SEARCH = 'DO_SEARCH';
 export const START_SEARCH_REQUEST = 'START_SEARCH_REQUEST';
 export const RECEIVE_RESULTS = 'RECEIVE_RESULTS';
 export const SEARCH_REQUEST_FAILURE = 'SEARCH_REQUEST_FAILURE';
+export const FACET_SELECTED = 'FACET_SELECTED';
+export const FACET_DESELECTED = 'FACET_DESELECTED';
+export const FACET_CLEAR_ALL = 'FACET_CLEAR_ALL';
 
 
 /* Action Creators */
@@ -84,31 +88,61 @@ function transformHits(hitObj, id_length=4) {
   return newHit;
 }
 
+function search(from, pageSize) {
+  return function(body) {
+    return function(dispatch) {
+      return client.search({
+        index: 'kap',
+        sort: '_doc',
+        body: body,
+        from: from,
+        size: pageSize
+      }, (err, result) => {
+        if(!err) {
+          const { hits, aggregations } = result;
+          const updatedHits = hits.hits.map(transformHits);
+          dispatch(receiveResults(hits.total, updatedHits, aggregations));
+        } else {
+          dispatch(searchRequestFailure(err.message));
+        }
+      });
+    }
+  }
+}
+
 
 export function doSearch() {
   return function(dispatch, getState) {
-    const { query } = getState();
     dispatch(startSearchRequest());
 
-    let queryBody = query.queryType === 'phrase'
-      ? {"query":{"match":{"_all":{"query":query.value,"type":"phrase"}}}}
-      : {"query":{"match":{"_all":{"query":query.value}}}};
+    const { filter, query } = getState();
+    const searchFor = search(query.from, query.pageSize);
 
-    return client.search({
-      index: 'kap',
-      sort: '_doc',
-      body: queryBody,
-      from: query.from,
-      size: query.pageSize
-    }, (err, result) => {
-      if (!err) {
-        const { hits } = result;
-        const updatedHits = hits.hits.map(transformHits);
-        dispatch(receiveResults(hits.total, updatedHits));
-      } else {
-        dispatch(searchRequestFailure(err.message));
-      }
+    const mustStmt = query.queryType === 'phrase'
+      ? [{"match":{"_all":{"query":query.value,"type":"phrase"}}}]
+      : [{"match":{"_all":{"query":query.value}}}];
+
+    const byType = Object.keys(filter.activeFiltersByType).map((type, filterState) => {
+      return filterStanzaFactory(type, filter.activeFiltersByType);
     });
+
+    const filterStmt = byType.filter((v) => {
+      return v !== undefined;
+    }).reduce((prev, curr) => {
+      return prev.concat(curr)
+    }, []);
+
+    const queryStanza = {
+      "query": {
+        "bool": {
+          must: mustStmt,
+          filter: filterStmt
+        }
+      }
+    };
+
+    const queryBody = Object.assign({}, queryStanza, aggregations);
+    return searchFor(queryBody)(dispatch);
   }
 }
 
@@ -116,6 +150,58 @@ export function pageResults(newOffset) {
   return function(dispatch, getState) {
     const { query } = getState();
     dispatch(updateQuery(query.value, query.queryType, newOffset));
+    dispatch(doSearch());
+  }
+}
+
+function facetSelected(filterObj) {
+  return {
+    type: FACET_SELECTED,
+    filters: filterObj
+  }
+}
+
+function facetDeselected(filterObj) {
+  return {
+    type: FACET_DESELECTED,
+    filters: filterObj
+  }
+}
+
+export function selectFacet(facetType, facetValue) {
+  return function(dispatch, getState) {
+    const { filter, query } = getState();
+    // Set paginator back to the beginning when facet de/selected
+    dispatch(updateQuery(query.value, query.queryType, 0))
+    const currentSelections = filter.activeFiltersByType[facetType];
+
+    if (currentSelections.indexOf(facetValue) === -1) {
+      let updatedFilters = Object.assign({}, filter.activeFiltersByType, {
+        [facetType]: [...currentSelections, facetValue]
+      });
+      dispatch(facetSelected(updatedFilters));
+    } else {
+      const targetIndex = currentSelections.indexOf(facetValue);
+      // TOFIX
+      currentSelections.splice(targetIndex, 1);
+      let updatedFilters = Object.assign({}, filter.activeFiltersByType, {
+        [facetType]: [...currentSelections]
+      });
+      dispatch(facetDeselected(updatedFilters))
+    }
+    dispatch(doSearch());
+  }
+}
+
+function clear() {
+  return {
+    type: FACET_CLEAR_ALL
+  }
+}
+
+export function clearAllFacets() {
+  return function(dispatch) {
+    dispatch(clear());
     dispatch(doSearch());
   }
 }
