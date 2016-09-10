@@ -15,8 +15,8 @@ class FacetValueList extends Component {
   }
 
   checkSelected(value) {
-    const { active } = this.props
-    if (active.indexOf(value) !== -1) {
+    const { activeFilters } = this.props
+    if (activeFilters.indexOf(value) !== -1) {
       return true;
     } else {
       return false;
@@ -47,7 +47,7 @@ class FacetValueList extends Component {
 FacetValueList.propTypes = {
   facetType: PropTypes.string.isRequired,
   values: PropTypes.array.isRequired,
-  active: PropTypes.array.isRequired,
+  activeFilters: PropTypes.array.isRequired,
   callback: PropTypes.func.isRequired
 }
 

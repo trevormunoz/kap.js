@@ -58,7 +58,7 @@ class Facets extends Component {
         <FacetValueList
           facetType={facetType}
           values={facets[facetName].buckets}
-          active={filters[facetType]}
+          activeFilters={filters[facetType]}
           callback={this.facetChangeCallback}
         />
       </div>
