@@ -1,5 +1,0 @@
----
-layout: null
-permalink: api/v1/locations.json
----
-{{ site.data.locations | jsonify}}
