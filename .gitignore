@@ -1,9 +1,4 @@
 .DS_Store
-_site
-_plugins
-_includes/typekit.html
-.sass-cache
-.jekyll-metadata
+dist
 node_modules
-static/vendor
 **/clientConfig.js
