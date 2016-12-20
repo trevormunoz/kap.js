@@ -1,0 +1,39 @@
+.facet-panel-header {
+  display: flex;
+  justify-content: center;
+
+  h4 {
+    margin-bottom: ($line-height / 2);
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+.facet-panel-inner {
+  display: flex;
+  flex: 1;
+  flex-flow: column;
+}
+
+.facet-panel-body {
+  background: radial-gradient(ellipse at top, $shadow-color-stop-2 0%, $shadow-color-stop-1 75%) 0 top,
+              radial-gradient(ellipse at bottom, $shadow-color-stop-2 0%, $shadow-color-stop-1 75%) 100% bottom;
+  background-attachment: scroll, scroll;
+  background-repeat: no-repeat;
+  background-size: 100% 10px, 100% 10px;
+  border-collapse: collapse;
+  border-spacing: 0;
+  display: flex;
+  flex: 1;
+  flex-flow: column;
+  margin-bottom: ($gutter / 3);
+  overflow-y: auto;
+  padding-top: ($line-height / 2);
+}
+
+.facet-panel-footer {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: ($gutter / 3);
+  padding-right: ($gutter / 2);
+}
