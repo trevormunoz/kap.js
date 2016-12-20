@@ -1,6 +1,8 @@
 const webpack = require('webpack');
 const path = require('path');
 
+var HtmlWebpackPlugin = require('html-webpack-plugin');
+
 var Dashboard = require('webpack-dashboard');
 var DashboardPlugin = require('webpack-dashboard/plugin');
 var dashboard = new Dashboard();
@@ -76,6 +78,10 @@ const options = {
     new webpack.ProvidePlugin({
     'fetch': 'imports?this=>global!exports?global.fetch!whatwg-fetch'
   }),
+    new HtmlWebpackPlugin({
+      title: "KAP Collection Search",
+      template: 'index.ejs'
+    }),
     new DashboardPlugin(dashboard.setData)
   ]
 };
