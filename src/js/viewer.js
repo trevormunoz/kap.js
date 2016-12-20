@@ -4,7 +4,7 @@ import 'file?name=vendor/[name].[ext]!openseadragon/build/openseadragon/opensead
 var el = document.getElementById('viewer');
 
 if (el) {
-  const baseUri = 'http://iiif.katherineanneporter.info/manifests/';
+  const baseUri = 'http://iiif.katherine-anne-porter.us/manifests/';
   const item = el.dataset.itemId;
   const manifestUri = `${baseUri}${item}-manifest.json`;
 
