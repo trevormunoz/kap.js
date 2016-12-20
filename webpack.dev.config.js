@@ -7,10 +7,6 @@ var dashboard = new Dashboard();
 
 const options = {
   entry: [
-    './src/js/main.js',
-    './src/js/viewer.js',
-    './src/js/map.js',
-    './src/css/shim.css'
   ],
   output: {
     filename: '[name].js',
