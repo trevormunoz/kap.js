@@ -5,4 +5,4 @@ import "./viewer.js";
 import "./map.js";
 import "./search/search.js";
 
-window.console.log('main.js loaded');
+window.console.log('kap.js loaded');
