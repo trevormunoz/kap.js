@@ -1,0 +1,14 @@
+@import url('https://fonts.googleapis.com/css?family=Mate+SC|Open+Sans');
+
+body {
+  font-size: 21px;
+  font-family: 'Open Sans', sans-serif;
+}
+
+#search {
+  margin-bottom: 450px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 140px;
+  width: 1170px;
+}
