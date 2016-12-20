@@ -9,15 +9,14 @@ var dashboard = new Dashboard();
 
 const options = {
   entry: [
+    './src/js/main.js'
   ],
   output: {
     filename: '[name].js',
-    path: path.join(__dirname, "_site", "static"),
-    publicPath: 'http://localhost:8080/'
+    path: 'dist'
   },
   devtool: 'cheap-module-eval-source-map',
   devServer: {
-    contentBase: 'http://localhost:4000/',
     colors: true,
     quiet: true,
     hot: true,
@@ -25,52 +24,66 @@ const options = {
     headers: { 'Access-Control-Allow-Origin': '*' }
   },
   resolve: {
-    modulesDirectories: ['node_modules'],
-    extensions: ['', '.js', '.json']
+    modules: [
+      path.join(__dirname, 'src'),
+      'node_modules'
+    ]
   },
   module: {
-    preLoaders: [
+    rules: [
       {
         test: /\.js$/,
-        loader: 'eslint',
-        include: ['src'],
-      }
-    ],
-    loaders: [
-      {
-        test: /\.js$/,
+        enforce: 'pre',
         exclude: /node_modules/,
-        loader: 'babel-loader',
-        query: {
-          babelrc: false,
-          presets: ['babel-preset-es2015', 'babel-preset-react']
-        }
-      },
-      {
-        test: /\.scss$/,
-        loader: 'style!css!sass'
+        use: [
+          {
+            loader: 'babel-loader',
+            options: {
+              babelrc: false,
+              presets: ['babel-preset-es2015', 'babel-preset-react']
+            }
+          },
+          {
+            loader: 'eslint-loader',
+            options: {
+              configFile: path.join(__dirname, 'eslint.js'),
+              useEslintrc: false
+            }
+          }
+        ]
       },
       {
         test: /\.css$/,
-        loader: 'style!css'
+        use: [
+          {
+            loader: 'style-loader'
+          },
+          {
+            loader: 'css-loader'
+          }
+        ]
       },
       {
         test: /\.json$/,
         include: ['src'],
-        loader: 'json'
+        use: [
+          {
+            loader: 'json-loader'
+          }
+        ]
       },
       {
         test: /\.(jpg|png|gif|eot|svg|ttf|woff|woff2)(\?.*)?$/,
-        loader: 'file',
-        query: {
-          name: '_site/static/media/[name].[ext]'
-        }
+        use: [
+          {
+            loader: 'file-loader',
+            options: {
+              name: 'dist/static/media/[name].[ext]'
+            }
+          }
+        ]
       }
     ]
-  },
-  eslint: {
-    configFile: path.join(__dirname, 'eslint.js'),
-    useEslintrc: false
   },
   plugins: [
     new webpack.DefinePlugin({ 'process.env.NODE_ENV': '"development"' }),
@@ -83,7 +96,10 @@ const options = {
       template: 'index.ejs'
     }),
     new DashboardPlugin(dashboard.setData)
-  ]
+  ],
+  performance: {
+    hints: process.env.NODE_ENV === 'production' ? "warning" : false
+  }
 };
 
 module.exports = options;
